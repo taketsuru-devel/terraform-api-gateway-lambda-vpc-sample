@@ -17,18 +17,11 @@ resource "aws_vpc" "this" {
   }
 }
 
-resource "aws_internet_gateway" "this" {
-  vpc_id = aws_vpc.this.id
-  tags = {
-    Name = format("%s-igw", var.project_name)
-  }
-}
-
 resource "aws_route_table" "this" {
   vpc_id = aws_vpc.this.id
   route {
-    cidr_block = "192.168.1.0/24"
-    gateway_id = aws_internet_gateway.this.id
+    cidr_block = data.aws_vpc.ec2_vpc.cidr_block
+    vpc_peering_connection_id = aws_vpc_peering_connection.this_to_ec2.id
   }
   tags = {
     Name = format("%s-rtb", var.project_name)

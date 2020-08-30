@@ -21,6 +21,10 @@ resource "aws_lambda_function" "this" {
   runtime          = "python3.6"
   handler          = "index.lambda_handler"
   timeout          = 10
+  vpc_config {
+    subnet_ids = [aws_subnet.this.id]
+    security_group_ids = [aws_security_group.this.id]
+  }
   filename         = data.archive_file.source_code.output_path
   source_code_hash = data.archive_file.source_code.output_base64sha256
 }
