@@ -1,0 +1,2 @@
+# ec2でもhttps通信したいためのgateway
+- endpoint単位で作るのが理想だが手間なのでlambdaで分岐する
