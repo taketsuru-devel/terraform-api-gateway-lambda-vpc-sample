@@ -1,0 +1,6 @@
+[submodule "module/vpc"]
+	path = module/vpc
+	url = https://github.com/taketsuru-devel/terraform-vpc-sample
+[submodule "module/apigw-lambda"]
+	path = module/apigw-lambda
+	url = https://github.com/taketsuru-devel/terraform-api-gateway-lambda-sample
